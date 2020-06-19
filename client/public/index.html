@@ -32,24 +32,7 @@
     <title>React App</title>
   </head>
   <body>
-    <script
-      src="https://apis.google.com/js/api:client.js"
-      async
-      defer
-      onload="initializeGoogleOAuth()"
-    ></script>
-
-    <script>
-      function initializeGoogleOAuth() {
-        gapi.load("auth2", function () {
-          G = gapi.auth2.init({
-            client_id:
-              "556472372955-l2g1q5v53nfrir88ss9vah7hlm4sd5b2.apps.googleusercontent.com",
-            cookiepolicy: "single_host_origin",
-          });
-        });
-      }
-    </script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
 
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
