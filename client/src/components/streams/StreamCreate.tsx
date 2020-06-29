@@ -7,15 +7,15 @@ import {
   WrappedFieldMetaProps,
 } from "redux-form";
 
-//let a: WrappedFieldMetaProps;
+import { connect, ConnectedProps } from "react-redux";
+import { createStream } from "../../actions/index";
 
-interface StreamCreateProps extends InjectedFormProps {}
 interface CustomFieldProps {
   label: string;
   id: string;
 }
 
-class StreamCreate extends React.Component<StreamCreateProps> {
+class StreamCreate extends React.Component<InjectedFormProps & PropsFromRedux> {
   renderInputError({ error, touched }: WrappedFieldMetaProps) {
     if (touched && error)
       return (
@@ -41,7 +41,9 @@ class StreamCreate extends React.Component<StreamCreateProps> {
     );
   };
 
-  onSubmit(formValues: any) {}
+  onSubmit = (formValues: any) => {
+    this.props.createStream(formValues);
+  };
 
   render() {
     return (
@@ -80,7 +82,19 @@ const validate = (formValues: any) => {
   return errors;
 };
 
-export default reduxForm({
+const formWrapped = reduxForm({
   form: "streamCreate",
   validate,
-})(StreamCreate);
+})(StreamCreate as any);
+
+const mapToDispatch = {
+  createStream,
+};
+
+const connector = connect(null, mapToDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type Props = PropsFromRedux;
+
+export default connector(formWrapped);
