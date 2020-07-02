@@ -8,7 +8,7 @@ import {
 } from "redux-form";
 
 import { connect, ConnectedProps } from "react-redux";
-import { createStream } from "../../actions/index";
+import { thunkCreateStream } from "../../actions/streamActions";
 
 interface CustomFieldProps {
   label: string;
@@ -42,7 +42,7 @@ class StreamCreate extends React.Component<InjectedFormProps & PropsFromRedux> {
   };
 
   onSubmit = (formValues: any) => {
-    this.props.createStream(formValues);
+    this.props.thunkCreateStream(formValues);
   };
 
   render() {
@@ -88,7 +88,7 @@ const formWrapped = reduxForm({
 })(StreamCreate as any);
 
 const mapToDispatch = {
-  createStream,
+  thunkCreateStream,
 };
 
 const connector = connect(null, mapToDispatch);

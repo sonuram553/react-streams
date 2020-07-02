@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { signIn, signOut } from "../actions";
+import { signIn, signOut } from "../actions/authActions";
 import { RootState } from "../reducers";
 
 declare const gapi: any;

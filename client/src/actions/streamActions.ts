@@ -1,0 +1,79 @@
+import streams from "../apis/streams";
+import { Action } from "redux";
+import { ThunkAction } from "redux-thunk";
+import { RootState } from "../reducers";
+import { Stream } from "../types";
+
+export const CREATE_STREAM = "Create Stream";
+export const FETCH_STREAMS = "Fetch Streams";
+export const FETCH_STREAM = "Fetch Stream";
+export const DELETE_STREAM = "Delete Stream";
+export const EDIT_STREAM = "Edit Stream";
+
+type _ThunkAction = ThunkAction<void, RootState, unknown, Action<string>>;
+
+export const createStream = (stream: Stream) => ({
+  type: CREATE_STREAM,
+  payload: stream,
+});
+
+export const thunkCreateStream = (formValues: any): _ThunkAction => async (
+  dispatch: any
+) => {
+  const res = await streams.post("/streams", formValues);
+  dispatch(createStream(res.data));
+};
+
+export const fetchStreams = (streams: Stream[]) => ({
+  type: FETCH_STREAMS,
+  payload: streams,
+});
+
+export const thunkFetchStreams = (): _ThunkAction => async (dispatch) => {
+  const res = await streams.get("/streams");
+  dispatch(fetchStreams(res.data));
+};
+
+export const fetchStream = (stream: Stream) => ({
+  type: FETCH_STREAM,
+  payload: stream,
+});
+
+export const thunkFetchStream = (id: number): _ThunkAction => async (
+  dispatch
+) => {
+  const res = await streams.get(`/streams/${id}`);
+  dispatch(fetchStream(res.data));
+};
+
+export const editStream = (stream: Stream) => ({
+  type: EDIT_STREAM,
+  payload: stream,
+});
+
+export const thunkEditStream = (
+  id: number,
+  formValues: any
+): _ThunkAction => async (dispatch) => {
+  const res = await streams.put(`/streams/${id}`, formValues);
+  dispatch(editStream(res.data));
+};
+
+export const deleteStream = (id: number) => ({
+  type: DELETE_STREAM,
+  payload: id,
+});
+
+export const thunkDeleteStream = (id: number): _ThunkAction => async (
+  dispatch
+) => {
+  await streams.delete(`/streams/${id}`);
+  dispatch(deleteStream(id));
+};
+
+export type Type =
+  | ReturnType<typeof createStream>
+  | ReturnType<typeof fetchStreams>
+  | ReturnType<typeof fetchStreams>
+  | ReturnType<typeof editStream>
+  | ReturnType<typeof deleteStream>;

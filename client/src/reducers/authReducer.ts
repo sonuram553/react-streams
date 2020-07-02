@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_OUT, ActionsType } from "../actions";
+import { SIGN_IN, SIGN_OUT, ActionsType } from "../actions/authActions";
 
 interface State {
   isSignedIn: boolean | null;
