@@ -1,28 +1,10 @@
 {
   "streams": [
     {
-      "title": "sonu ram",
-      "description": "hell world",
-      "userId": "",
-      "id": 4
-    },
-    {
-      "title": "sonu ram",
-      "description": "hell world",
-      "userId": "103692112887094072282",
-      "id": 5
-    },
-    {
-      "title": "howdy",
-      "description": "babe",
+      "title": "hello",
+      "description": "world",
       "userId": "103692112887094072282",
       "id": 6
-    },
-    {
-      "title": "sharun",
-      "description": "ram",
-      "userId": "103692112887094072282",
-      "id": 7
     }
   ]
 }

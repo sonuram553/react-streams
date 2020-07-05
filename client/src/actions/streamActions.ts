@@ -59,8 +59,9 @@ export const thunkEditStream = (
   id: string,
   formValues: any
 ): _ThunkAction => async (dispatch) => {
-  const res = await streams.put(`/streams/${id}`, formValues);
+  const res = await streams.patch(`/streams/${id}`, formValues);
   dispatch(editStream(res.data));
+  history.push("/");
 };
 
 export const deleteStream = (id: string) => ({

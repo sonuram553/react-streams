@@ -43,7 +43,6 @@ class StreamForm extends React.Component<Props & InjectedFormProps> {
   };
 
   onSubmit = (formValues: any) => {
-    //this.props.thunkCreateStream(formValues);
     this.props.onSubmit(formValues);
   };
 
@@ -87,16 +86,5 @@ const validate = (formValues: any) => {
 export default reduxForm({
   form: "streamForm",
   validate,
+  enableReinitialize: true,
 })(StreamForm as any);
-
-/* const mapToDispatch = {
-  thunkCreateStream,
-};
-
-const connector = connect(null, mapToDispatch);
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
-
-type Props = PropsFromRedux;
-
-export default connector(formWrapped); */
