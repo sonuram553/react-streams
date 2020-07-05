@@ -20,7 +20,7 @@ export default (state: State = initialState, action: ActionTypes): State => {
     case DELETE_STREAM:
       return { ...state, [action.payload as number]: undefined };
 
-    case FETCH_STREAM:
+    case FETCH_STREAMS:
       const streams: State = _.mapKeys(action.payload as Stream[], "id");
       return { ...state, ...streams };
 

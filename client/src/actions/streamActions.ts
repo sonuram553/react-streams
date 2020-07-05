@@ -3,6 +3,7 @@ import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../reducers";
 import { Stream } from "../types";
+import history from "../history";
 
 export const CREATE_STREAM = "Create Stream";
 export const FETCH_STREAMS = "Fetch Streams";
@@ -18,10 +19,13 @@ export const createStream = (stream: Stream) => ({
 });
 
 export const thunkCreateStream = (formValues: any): _ThunkAction => async (
-  dispatch: any
+  dispatch,
+  getState
 ) => {
-  const res = await streams.post("/streams", formValues);
+  const { userId } = getState().auth;
+  const res = await streams.post("/streams", { ...formValues, userId });
   dispatch(createStream(res.data));
+  history.push("/");
 };
 
 export const fetchStreams = (streams: Stream[]) => ({

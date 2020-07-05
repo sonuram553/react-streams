@@ -60,10 +60,12 @@ class GoogleOAuth extends React.Component<Props> {
 const mapState = (state: RootState) => {
   return { isSignedIn: state.auth.isSignedIn };
 };
+
 const mapDispatch = {
   signIn,
   signOut,
 };
+
 const connector = connect(mapState, mapDispatch);
 type Props = ConnectedProps<typeof connector>;
 export default connector(GoogleOAuth);

@@ -1,5 +1,3 @@
-import streams from "../apis/streams";
-
 export const SIGN_IN = "Sign In";
 export const SIGN_OUT = "Sign Out";
 
