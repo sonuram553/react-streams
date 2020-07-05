@@ -18,7 +18,7 @@ const initialState = {};
 export default (state: State = initialState, action: ActionTypes): State => {
   switch (action.type) {
     case DELETE_STREAM:
-      return { ...state, [action.payload as number]: undefined };
+      return _.omit(state, action.payload as string);
 
     case FETCH_STREAMS:
       const streams: State = _.mapKeys(action.payload as Stream[], "id");

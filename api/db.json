@@ -1,22 +1,6 @@
 {
   "streams": [
     {
-      "title": "Stream",
-      "description": "Great stream!",
-      "id": 1
-    },
-    {
-      "title": "Other stream",
-      "description": "New stream!",
-      "id": 2
-    },
-    {
-      "title": "sonu ram",
-      "description": "hell world",
-      "userId": "",
-      "id": 3
-    },
-    {
       "title": "sonu ram",
       "description": "hell world",
       "userId": "",
@@ -33,6 +17,12 @@
       "description": "babe",
       "userId": "103692112887094072282",
       "id": 6
+    },
+    {
+      "title": "sharun",
+      "description": "ram",
+      "userId": "103692112887094072282",
+      "id": 7
     }
   ]
 }

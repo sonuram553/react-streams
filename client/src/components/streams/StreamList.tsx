@@ -10,11 +10,13 @@ class StreamList extends React.Component<Props> {
     this.props.thunkFetchStreams();
   }
 
-  renderAdmin({ userId }: Stream) {
+  renderAdmin({ userId, id }: Stream) {
     if (!userId || this.props.currentUserId !== userId) return;
     return (
       <div className="right floated content">
-        <button className="ui button primary">Edit</button>
+        <Link to={`streams/edit/${id}`} className="ui button primary">
+          Edit
+        </Link>
         <button className="ui button negative">Delete</button>
       </div>
     );

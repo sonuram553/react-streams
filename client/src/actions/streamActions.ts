@@ -43,7 +43,7 @@ export const fetchStream = (stream: Stream) => ({
   payload: stream,
 });
 
-export const thunkFetchStream = (id: number): _ThunkAction => async (
+export const thunkFetchStream = (id: string): _ThunkAction => async (
   dispatch
 ) => {
   const res = await streams.get(`/streams/${id}`);
@@ -56,19 +56,19 @@ export const editStream = (stream: Stream) => ({
 });
 
 export const thunkEditStream = (
-  id: number,
+  id: string,
   formValues: any
 ): _ThunkAction => async (dispatch) => {
   const res = await streams.put(`/streams/${id}`, formValues);
   dispatch(editStream(res.data));
 };
 
-export const deleteStream = (id: number) => ({
+export const deleteStream = (id: string) => ({
   type: DELETE_STREAM,
   payload: id,
 });
 
-export const thunkDeleteStream = (id: number): _ThunkAction => async (
+export const thunkDeleteStream = (id: string): _ThunkAction => async (
   dispatch
 ) => {
   await streams.delete(`/streams/${id}`);
