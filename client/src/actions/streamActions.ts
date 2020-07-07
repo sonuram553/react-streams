@@ -74,6 +74,7 @@ export const thunkDeleteStream = (id: string): _ThunkAction => async (
 ) => {
   await streams.delete(`/streams/${id}`);
   dispatch(deleteStream(id));
+  history.push("/");
 };
 
 export type Type =
