@@ -3,9 +3,11 @@ import { connect, ConnectedProps } from "react-redux";
 import { thunkFetchStream } from "../../actions/streamActions";
 import { RootState } from "../../reducers";
 import { RouteComponentProps } from "react-router-dom";
+import flv from "flv.js";
 
 class StreamShow extends React.Component<Props> {
   streamId = (this.props.match.params as any).id;
+  videoRef = React.createRef() as React.RefObject<HTMLVideoElement>;
 
   componentDidMount() {
     this.props.thunkFetchStream(this.streamId);
@@ -17,6 +19,7 @@ class StreamShow extends React.Component<Props> {
     const { title, description } = this.props.stream;
     return (
       <div>
+        <video ref={this.videoRef} style={{ width: "100%" }} controls />
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
