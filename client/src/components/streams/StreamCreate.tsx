@@ -12,7 +12,7 @@ class StreamCreate extends React.Component<PropsFromRedux> {
     return (
       <div>
         <h3>Create a new Stream</h3>
-        <StreamForm onSubmit={this.onSubmit}></StreamForm>;
+        <StreamForm onSubmit={this.onSubmit}></StreamForm>
       </div>
     );
   }
