@@ -8,9 +8,33 @@ import flv from "flv.js";
 class StreamShow extends React.Component<Props> {
   streamId = (this.props.match.params as any).id;
   videoRef = React.createRef() as React.RefObject<HTMLVideoElement>;
+  flvPlayer: flv.Player | null = null;
 
   componentDidMount() {
     this.props.thunkFetchStream(this.streamId);
+    this.buildPlayer();
+  }
+
+  componentDidUpdate() {
+    this.buildPlayer();
+  }
+
+  componentWillUnmount() {
+    this.flvPlayer?.destroy();
+  }
+
+  buildPlayer() {
+    if (this.flvPlayer || !this.props.stream) return;
+
+    this.flvPlayer = flv.createPlayer({
+      type: "flv",
+      url: `http://localhost:8000/live/${this.streamId}.flv`,
+    });
+
+    this.flvPlayer.attachMediaElement(
+      this.videoRef.current as HTMLVideoElement
+    );
+    this.flvPlayer.load();
   }
 
   render() {
